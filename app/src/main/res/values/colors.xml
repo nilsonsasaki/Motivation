@@ -10,6 +10,7 @@
 
     <color name="colorPrimary">#7F2A68</color>
     <color name="colorPrimaryDark">#5F1049</color>
-    <color name="colorAccent">#D081AB</color>
+    <color name="colorSecondary">#D081AB</color>
+    <color name="colorSecondaryVariant">#9e537c</color>
     <color name="darkGrey">#4D4D4D</color>
 </resources>
