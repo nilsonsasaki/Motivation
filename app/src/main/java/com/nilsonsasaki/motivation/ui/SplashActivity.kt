@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import com.nilsonsasaki.motivation.R
 import com.nilsonsasaki.motivation.databinding.ActivitySplashBinding
+import com.nilsonsasaki.motivation.infra.MotivationConstants
 import com.nilsonsasaki.motivation.infra.SecurityPreferences
 
 class SplashActivity : AppCompatActivity() {
@@ -22,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
-        mSecurityPreferences= SecurityPreferences(this)
+        mSecurityPreferences = SecurityPreferences(this)
 
         _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(_binding.root)
@@ -36,10 +38,10 @@ class SplashActivity : AppCompatActivity() {
         val name = _binding.etUserName.text.toString()
 
         if (name.isNotBlank()) {
-            mSecurityPreferences.storeString("name",name)
+            mSecurityPreferences.storeString(MotivationConstants.KEY.PERSON_NAME, name)
             startActivity(Intent(this, MainActivity::class.java))
         } else {
-            Toast.makeText(this, "Informe o seu nome", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.pt_insert_your_name), Toast.LENGTH_SHORT).show()
         }
     }
 }
