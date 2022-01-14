@@ -4,4 +4,6 @@
     <string name="pt_lets_start">Vamos começar?</string>
     <string name="pt_save">Salvar</string>
     <string name="pt_insert_your_name">Informe o seu nome</string>
+    <string name="new_phrase">Nova Frase</string>
+    <string name="phrase">Frase</string>
 </resources>

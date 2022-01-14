@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         mSecurityPreferences = SecurityPreferences(this)
 
-        _binding.tvHello.text = mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+        _binding.tvNameText.text= mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
 
     }
 }
