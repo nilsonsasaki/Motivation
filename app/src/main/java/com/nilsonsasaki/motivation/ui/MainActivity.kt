@@ -2,6 +2,8 @@ package com.nilsonsasaki.motivation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import com.nilsonsasaki.motivation.R
 import com.nilsonsasaki.motivation.databinding.ActivityMainBinding
 import com.nilsonsasaki.motivation.infra.MotivationConstants
 import com.nilsonsasaki.motivation.infra.SecurityPreferences
@@ -19,7 +21,60 @@ class MainActivity : AppCompatActivity() {
 
         mSecurityPreferences = SecurityPreferences(this)
 
-        _binding.tvNameText.text= mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+        _binding.tvNameText.text =
+            mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
 
+        setOnClickListeners()
+
+
+    }
+
+    private fun setOnClickListeners() {
+        _binding.icAll.setOnClickListener() {
+            handleFilter(MotivationConstants.FilterHandler.ALL)
+        }
+        _binding.icHappy.setOnClickListener {
+            handleFilter(MotivationConstants.FilterHandler.HAPPY)
+        }
+        _binding.icMorning.setOnClickListener {
+            handleFilter(MotivationConstants.FilterHandler.MORNING)
+        }
+        _binding.btNewPhrase.setOnClickListener() {
+            handleNewPhrase()
+        }
+    }
+
+    private fun handleNewPhrase() {
+        TODO("Not yet implemented")
+    }
+
+    private fun handleFilter(value: MotivationConstants.FilterHandler) {
+
+        _binding.icAll.setColorFilter(ContextCompat.getColor(this, R.color.white))
+        _binding.icHappy.setColorFilter(ContextCompat.getColor(this, R.color.white))
+        _binding.icMorning.setColorFilter(ContextCompat.getColor(this, R.color.white))
+
+        when (value) {
+
+            MotivationConstants.FilterHandler.ALL -> {
+                _binding.icAll.setColorFilter(ContextCompat.getColor(this, R.color.colorSecondary))
+            }
+            MotivationConstants.FilterHandler.HAPPY -> {
+                _binding.icHappy.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.colorSecondary
+                    )
+                )
+            }
+            MotivationConstants.FilterHandler.MORNING -> {
+                _binding.icMorning.setColorFilter(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.colorSecondary
+                    )
+                )
+            }
+        }
     }
 }
