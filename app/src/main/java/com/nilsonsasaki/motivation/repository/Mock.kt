@@ -30,7 +30,7 @@ class Mock {
     fun getPhrase(filterId: MotivationConstants.FilterHandler): String {
 
         val filtered = mListPhrases.filter { it.category == filterId || filterId == ALL}
-        val rand = Random.nextInt(mListPhrases.size)
+        val rand = Random.nextInt(filtered.size)
         return filtered[rand].description
     }
 
