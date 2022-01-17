@@ -23,8 +23,9 @@ class MainActivity : AppCompatActivity() {
 
         mSecurityPreferences = SecurityPreferences(this)
 
-        _binding.tvNameText.text =
-            mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+        val name = mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+        _binding.tvNameText.text = getString(R.string.pt_greetings, name)
+
 
         //initial filter setup
         handleFilter(phraseFilter)
