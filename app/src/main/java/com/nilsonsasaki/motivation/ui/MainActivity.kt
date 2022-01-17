@@ -7,11 +7,13 @@ import com.nilsonsasaki.motivation.R
 import com.nilsonsasaki.motivation.databinding.ActivityMainBinding
 import com.nilsonsasaki.motivation.infra.MotivationConstants
 import com.nilsonsasaki.motivation.infra.SecurityPreferences
+import com.nilsonsasaki.motivation.repository.Mock
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var _binding: ActivityMainBinding
     private lateinit var mSecurityPreferences: SecurityPreferences
+    private var phraseFilter = MotivationConstants.FilterHandler.ALL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +26,10 @@ class MainActivity : AppCompatActivity() {
         _binding.tvNameText.text =
             mSecurityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
 
+        //initial filter setup
+        handleFilter(phraseFilter)
+        handleNewPhrase(phraseFilter)
         setOnClickListeners()
-
 
     }
 
@@ -40,12 +44,13 @@ class MainActivity : AppCompatActivity() {
             handleFilter(MotivationConstants.FilterHandler.MORNING)
         }
         _binding.btNewPhrase.setOnClickListener() {
-            handleNewPhrase()
+            handleNewPhrase(phraseFilter)
         }
     }
 
-    private fun handleNewPhrase() {
-        TODO("Not yet implemented")
+    private fun handleNewPhrase(filter: MotivationConstants.FilterHandler) {
+        val phrase = Mock().getPhrase(filter)
+        _binding.tvTextPhrase.text = phrase
     }
 
     private fun handleFilter(value: MotivationConstants.FilterHandler) {
